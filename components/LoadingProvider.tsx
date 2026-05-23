@@ -6,19 +6,48 @@ export default function LoadingProvider({ children }: { children: React.ReactNod
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Hide loading screen after page has loaded
-    const handleLoad = () => setIsLoading(false)
-    
-    if (document.readyState === "complete") {
+    const hideLoader = () => {
       setIsLoading(false)
-    } else {
-      window.addEventListener("load", handleLoad)
-      // Also hide after a minimum time to ensure smooth UX
-      const timer = setTimeout(() => setIsLoading(false), 2000)
-      return () => {
-        window.removeEventListener("load", handleLoad)
-        clearTimeout(timer)
+    }
+
+    const checkPageReady = () => {
+      // Check if document is fully loaded
+      if (document.readyState === "complete") {
+        // Wait a bit more for images to render
+        setTimeout(hideLoader, 500)
+        return true
       }
+      return false
+    }
+
+    // If already loaded when component mounts
+    if (checkPageReady()) {
+      return
+    }
+
+    // Listen for when DOM is fully parsed and resources loaded
+    const handleReadyStateChange = () => {
+      if (document.readyState === "complete") {
+        setTimeout(hideLoader, 500)
+      }
+    }
+
+    // Listen for window load event (all images and stylesheets loaded)
+    const handleLoad = () => {
+      // Wait a bit more to ensure images are rendered
+      setTimeout(hideLoader, 800)
+    }
+
+    document.addEventListener("readystatechange", handleReadyStateChange)
+    window.addEventListener("load", handleLoad)
+
+    // Maximum timeout of 5 seconds as fallback
+    const maxTimeout = setTimeout(hideLoader, 5000)
+
+    return () => {
+      document.removeEventListener("readystatechange", handleReadyStateChange)
+      window.removeEventListener("load", handleLoad)
+      clearTimeout(maxTimeout)
     }
   }, [])
 
