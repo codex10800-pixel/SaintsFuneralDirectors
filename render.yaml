@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: saints-web
+    env: node
+    plan: free
+    branch: main
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
