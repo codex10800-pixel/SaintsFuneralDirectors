@@ -8,16 +8,15 @@ export default function Loading() {
           <div className="h-6 bg-gray-200 rounded-lg w-2/3 mx-auto animate-pulse" />
         </div>
 
-        {/* Plans Grid Skeleton */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[...Array(3)].map((_, i) => (
-            <div key={i} className="space-y-4">
-              <div className="h-64 bg-gray-200 rounded-lg animate-pulse" />
-              <div className="h-4 bg-gray-200 rounded w-3/4 animate-pulse" />
-              <div className="h-4 bg-gray-200 rounded w-1/2 animate-pulse" />
-            </div>
+        {/* Content Skeleton */}
+        <div className="space-y-4">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="h-4 bg-gray-200 rounded animate-pulse" />
           ))}
         </div>
+
+        {/* Image Skeleton */}
+        <div className="h-96 bg-gray-200 rounded-lg animate-pulse" />
       </div>
     </div>
   )

@@ -1,27 +1,21 @@
-export default function ContactLoading() {
+export default function Loading() {
   return (
-    <main className="bg-white text-primary overflow-hidden">
-      <section className="min-h-screen flex items-center justify-center pt-24">
-        <div className="max-w-6xl mx-auto px-6 w-full">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Left side */}
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <div className="h-12 bg-gray-200 rounded w-2/3 animate-pulse" />
-                <div className="h-6 bg-gray-200 rounded w-full animate-pulse" />
-              </div>
-              <div className="space-y-4">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="h-20 bg-gray-200 rounded animate-pulse" />
-                ))}
-              </div>
-            </div>
+    <div className="min-h-screen bg-gray-50 pt-24">
+      <div className="max-w-4xl mx-auto px-6 space-y-8">
+        {/* Title Skeleton */}
+        <div className="h-12 bg-gray-200 rounded-lg w-1/2 animate-pulse" />
 
-            {/* Right side - Form */}
-            <div className="h-96 bg-gray-200 rounded-2xl animate-pulse" />
-          </div>
+        {/* Form Skeleton */}
+        <div className="bg-white rounded-lg p-8 space-y-6">
+          {[...Array(5)].map((_, i) => (
+            <div key={i} className="space-y-2">
+              <div className="h-4 bg-gray-200 rounded w-1/4 animate-pulse" />
+              <div className="h-10 bg-gray-200 rounded animate-pulse" />
+            </div>
+          ))}
+          <div className="h-10 bg-gray-200 rounded w-1/4 animate-pulse mt-6" />
         </div>
-      </section>
-    </main>
+      </div>
+    </div>
   )
 }
