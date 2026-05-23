@@ -1,5 +1,6 @@
 import "../styles/globals.css"
 import ClientProviders from "../components/ClientProviders"
+import LoadingProvider from "../components/LoadingProvider"
 import SiteHeader from "../components/Header"
 import SiteFooter from "../components/Footer"
 import WhatsAppButton from "../components/WhatsAppButton"
@@ -16,14 +17,16 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <ClientProviders>
-          <div className="min-h-screen flex flex-col">
-            <SiteHeader />
-            <main className="flex-1">{children}</main>
-            <SiteFooter />
-            <WhatsAppButton />
-          </div>
-        </ClientProviders>
+        <LoadingProvider>
+          <ClientProviders>
+            <div className="min-h-screen flex flex-col">
+              <SiteHeader />
+              <main className="flex-1">{children}</main>
+              <SiteFooter />
+              <WhatsAppButton />
+            </div>
+          </ClientProviders>
+        </LoadingProvider>
       </body>
     </html>
   )
