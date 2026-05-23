@@ -14,7 +14,7 @@ const services = [
   { title: "Funeral Services", img: "/amathole/assets/img/blog-image/4.png", desc: "A premium, respectful service tailored to your needs.", features: ["Ceremony planning", "Venue coordination", "Guest management"] },
   { title: "Burial Plans", img: "/amathole/assets/img/logos.png", desc: "Choose a burial plan that provides peace of mind.", features: ["Flexible payment", "Comprehensive coverage", "Family support"] },
   { title: "Repatriation", img: "/amathole/assets/img/blog-image/9.jpg", desc: "International and domestic repatriation handled sensitively.", features: ["Documentation", "Transport coordination", "Legal assistance"] },
-  { title: "Tombstones",img: "/amathole/assets/img/blog-image/6.jpg", desc: "Quality tombstone design and installation.", features: ["Custom designs", "Expert craftsmanship", "Long-lasting materials"] },
+  { title: "Tombstones", img: "/amathole/assets/img/blog-image/6.jpg", desc: "Quality tombstone design and installation.", features: ["Custom designs", "Expert craftsmanship", "Long-lasting materials"] },
   { title: "Funeral Transport", img: "/amathole/assets/img/blog-image/7.jpg", desc: "Reliable, dignified transport for services.", features: ["Professional drivers", "Luxury vehicles", "24/7 availability"] },
   { title: "Caskets", img: "/amathole/assets/img/services-image/7.jpg", desc: "A wide selection of caskets to suit budgets.", features: ["Multiple styles", "Premium quality", "Eco-friendly options"] },
 ]
@@ -186,11 +186,7 @@ export default function ServicesPage() {
 
                   {/* Content */}
                   <div className="absolute inset-0 p-8 flex flex-col justify-between">
-                    <div>
-                      <div className="text-4xl mb-4 transform group-hover:scale-125 transition-transform duration-500">
-                        {service.icon}
-                      </div>
-                    </div>
+                    <div></div>
 
                     <div>
                       <h3 className="text-2xl font-bold text-white mb-3">{service.title}</h3>
