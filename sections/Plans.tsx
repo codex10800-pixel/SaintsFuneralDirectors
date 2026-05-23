@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useEffect } from "react"
+import { useRef, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import gsap from "gsap"
@@ -70,7 +70,6 @@ const allPlans = [
 ]
 
 export default function Plans() {
-  const [scrollPosition, setScrollPosition] = useState(0)
   const ref = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
@@ -88,17 +87,6 @@ export default function Plans() {
       }
     )
   }, [])
-
-  const scroll = (direction: "left" | "right") => {
-    const container = document.getElementById("plans-carousel")
-    if (container) {
-      const scrollAmount = 400
-      container.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth"
-      })
-    }
-  }
 
   return (
     <section id="plans" className="py-24 bg-gray-50 scroll-mt-28">
@@ -166,22 +154,6 @@ export default function Plans() {
               </div>
             ))}
           </div>
-
-          {/* Carousel Controls */}
-          <button
-            onClick={() => scroll("left")}
-            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 p-2 bg-primary text-white rounded hover:bg-primary/90 transition"
-            aria-label="Scroll left"
-          >
-            ← Prev
-          </button>
-          <button
-            onClick={() => scroll("right")}
-            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 p-2 bg-primary text-white rounded hover:bg-primary/90 transition"
-            aria-label="Scroll right"
-          >
-            Next →
-          </button>
         </div>
 
         {/* Presidential Plans Title */}
@@ -229,28 +201,6 @@ export default function Plans() {
               </div>
             ))}
           </div>
-
-          {/* Carousel Controls */}
-          <button
-            onClick={() => {
-              const container = document.getElementById("presidential-carousel")
-              container?.scrollBy({ left: -400, behavior: "smooth" })
-            }}
-            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 p-2 bg-primary text-white rounded hover:bg-primary/90 transition"
-            aria-label="Scroll left"
-          >
-            ← Prev
-          </button>
-          <button
-            onClick={() => {
-              const container = document.getElementById("presidential-carousel")
-              container?.scrollBy({ left: 400, behavior: "smooth" })
-            }}
-            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 p-2 bg-primary text-white rounded hover:bg-primary/90 transition"
-            aria-label="Scroll right"
-          >
-            Next →
-          </button>
         </div>
       </div>
     </section>
