@@ -14,7 +14,7 @@ export default function LoadingProvider({ children }: { children: React.ReactNod
       // Check if document is fully loaded
       if (document.readyState === "complete") {
         // Wait a bit more for images to render
-        setTimeout(hideLoader, 500)
+        setTimeout(hideLoader, 5500)
         return true
       }
       return false
@@ -28,21 +28,21 @@ export default function LoadingProvider({ children }: { children: React.ReactNod
     // Listen for when DOM is fully parsed and resources loaded
     const handleReadyStateChange = () => {
       if (document.readyState === "complete") {
-        setTimeout(hideLoader, 500)
+        setTimeout(hideLoader, 5500)
       }
     }
 
     // Listen for window load event (all images and stylesheets loaded)
     const handleLoad = () => {
       // Wait a bit more to ensure images are rendered
-      setTimeout(hideLoader, 800)
+      setTimeout(hideLoader, 5800)
     }
 
     document.addEventListener("readystatechange", handleReadyStateChange)
     window.addEventListener("load", handleLoad)
 
-    // Maximum timeout of 5 seconds as fallback
-    const maxTimeout = setTimeout(hideLoader, 5000)
+    // Maximum timeout of 10 seconds as fallback
+    const maxTimeout = setTimeout(hideLoader, 10000)
 
     return () => {
       document.removeEventListener("readystatechange", handleReadyStateChange)
